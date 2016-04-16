@@ -13,8 +13,13 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.post('/test', function(request, response){
-    console.log("test");
+app.get('/notif', function(request, response) {
+  response.send("test"); //TODO enable dynamic responses
+  //response.end();
+});
+
+app.post('/test', function(request, response) {
+    console.log("test"); //TODO handle request, display incoming messages in a table
     response.end();
 });
 
