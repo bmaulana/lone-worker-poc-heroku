@@ -13,13 +13,9 @@ app.get('/', function(request, response) {
 	response.render('pages/index');
 });
 
-app.get('/db', function(request, response) {
-    response.render('pages/db');
-});
-
 app.get('/notif', function(request, response) {
-    var time = Date.now();
-    response.send(time.toString() + ": " + "test"); //TODO enable dynamic responses
+    var time = Date.now(); // TODO should be updated only when new broadcast message
+    response.send(time.toString() + ": " + " Message from Head Office"); //TODO enable dynamic responses
 });
 
 app.post('/test', function(request, response) {
