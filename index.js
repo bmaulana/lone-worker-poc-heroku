@@ -18,8 +18,8 @@ app.get('/db', function(request, response) {
 });
 
 app.get('/notif', function(request, response) {
-    var time = Date.now() / 1000 | 0;
-    response.send(time.toString() + " " + "test"); //TODO enable dynamic responses
+    var time = Date.now();
+    response.send(time.toString() + ": " + "test"); //TODO enable dynamic responses
 });
 
 app.post('/test', function(request, response) {
