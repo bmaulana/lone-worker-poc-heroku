@@ -14,8 +14,14 @@ app.get('/', function(request, response) {
 });
 
 app.get('/notif', function(request, response) {
-    var time = Date.now(); // TODO should be updated only when new broadcast message
-    response.send(time.toString() + ": " + " Message from Head Office"); //TODO enable dynamic responses
+	var currentdate = new Date(); 
+	var time = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds() + "; " ;
+    response.send(time.toString()+ "Message from Head Office"); //TODO enable dynamic responses
 });
 
 app.post('/test', function(request, response) {
