@@ -10,12 +10,16 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-  response.render('pages/index');
+	response.render('pages/index');
+});
+
+app.get('/db', function(request, response) {
+    response.render('pages/db');
 });
 
 app.get('/notif', function(request, response) {
-  response.send("test"); //TODO enable dynamic responses
-  //response.end();
+    var time = Date.now() / 1000 | 0;
+	response.send(time.toString() + "test"); //TODO enable dynamic responses
 });
 
 app.post('/test', function(request, response) {
@@ -24,5 +28,5 @@ app.post('/test', function(request, response) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+	console.log('Node app is running on port', app.get('port'));
 });
