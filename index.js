@@ -26,7 +26,7 @@ app.get('/notif', function(request, response) {
 });
 
 app.post('/test', function(request, response) {
-    console.log(request.body); //TODO handle request, display incoming messages in a table
+    console.log(request); //TODO handle request, display incoming messages in a table
     response.end();
 });
 
