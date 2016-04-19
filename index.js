@@ -14,6 +14,10 @@ app.get('/', function(request, response) {
 	response.render('pages/index');
 });
 
+app.get('/dashboard', function(request, response) {
+    response.render('pages/dashboard');
+});
+
 app.get('/notif', function(request, response) {
 	var currentdate = new Date(); 
 	var time = currentdate.getDate() + "/"
@@ -28,9 +32,22 @@ app.get('/notif', function(request, response) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.post('/', function(request, response) {
+    var post_data = request.body;
+    var currentdate = new Date();
+    var time = currentdate.getDate() + "/"
+        + (currentdate.getMonth()+1)  + "/"
+        + currentdate.getFullYear() + " "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes() + ":"
+        + currentdate.getSeconds() + "; " ;
+    console.log(time + post_data); //TODO save this as string to send when GET notif is called
+    response.end();
+});
+
 app.post('/test', function(request, response) {
     var post_data = request.body;
-    console.log(post_data);
+    console.log(post_data); //TODO display data in table on website
     response.end();
 });
 
