@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+var lastMessage = "";
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -26,7 +28,8 @@ app.get('/notif', function(request, response) {
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds() + "; " ;
-    response.send(time.toString()+ "Message from Head Office"); //TODO enable dynamic responses
+    //response.send(time.toString()+ "Message from Head Office"); //TODO enable dynamic responses
+    response.send(lastMessage);
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,7 +44,8 @@ app.post('/', function(request, response) {
         + currentdate.getHours() + ":"
         + currentdate.getMinutes() + ":"
         + currentdate.getSeconds() + "; " ;
-    console.log(time.toString() + post_data.message); //TODO save this as string to send when GET notif is called
+    lastMessage = time.toString() + post_data.message;
+    console.log(lastMessage); //TODO save this as string to send when GET notif is called
     response.end();
 });
 
