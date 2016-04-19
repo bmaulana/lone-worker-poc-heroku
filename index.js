@@ -41,7 +41,7 @@ app.post('/', function(request, response) {
         + currentdate.getHours() + ":"
         + currentdate.getMinutes() + ":"
         + currentdate.getSeconds() + "; " ;
-    console.log(time.toString() + post_data.toString()); //TODO save this as string to send when GET notif is called
+    console.log(time.toString() + post_data.message); //TODO save this as string to send when GET notif is called
     response.end();
 });
 
