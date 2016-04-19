@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var qs = require('querystring');
+var bodyParser = require('body-parser');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -25,8 +25,12 @@ app.get('/notif', function(request, response) {
     response.send(time.toString()+ "Message from Head Office"); //TODO enable dynamic responses
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.post('/test', function(request, response) {
-    console.log(request); //TODO handle request, display incoming messages in a table
+    var post_data = request.body;
+    console.log(post_data);
     response.end();
 });
 
