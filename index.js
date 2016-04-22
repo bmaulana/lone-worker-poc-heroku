@@ -19,6 +19,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/dashboard', function(request, response) {
+    console.log(localDB);
     response.render('pages/dashboard', {db: localDB});
 });
 
@@ -48,7 +49,6 @@ app.post('/test', function(request, response) {
     console.log(post_data); //TODO display data in table on website
     localDB[localDBCounter] = post_data;
     localDBCounter++;
-    console.log(localDB);
     response.end();
 });
 
