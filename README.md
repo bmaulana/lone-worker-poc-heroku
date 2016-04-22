@@ -1,1 +1,1 @@
-https://lone-worker-poc.herokuapp.com/dashboard
+https://lone-worker-poc.herokuapp.com/
