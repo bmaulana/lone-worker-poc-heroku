@@ -41,7 +41,7 @@ app.post('/', function(request, response) {
         + currentdate.getSeconds() + "; " ;
     lastMessage = time.toString() + post_data.message;
     console.log(lastMessage);
-    response.end();
+    response.redirect("/");
 });
 
 app.post('/test', function(request, response) {
@@ -52,10 +52,16 @@ app.post('/test', function(request, response) {
     response.end();
 });
 
-app.get('/reset', function(request, response) {
+app.get('/clear', function(request, response) {
     localDB = {};
     localDBCounter = 0;
+    response.redirect("/");
 });
+
+app.get('/refresh', function(request, response) {
+    response.redirect("/");
+});
+
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
