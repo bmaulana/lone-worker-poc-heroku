@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 
 var lastMessage = "";
+var localDB = {};
+var localDBCounter = 0;
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -13,22 +15,14 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-	response.render('pages/index');
+	response.render('pages/dashboard', {db: localDB});
 });
 
 app.get('/dashboard', function(request, response) {
-    response.render('pages/dashboard');
+    response.render('pages/dashboard', {db: localDB});
 });
 
 app.get('/notif', function(request, response) {
-	var currentdate = new Date(); 
-	var time = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds() + "; " ;
-    //response.send(time.toString()+ "Message from Head Office"); //TODO enable dynamic responses
     response.send(lastMessage);
 });
 
@@ -45,13 +39,15 @@ app.post('/', function(request, response) {
         + currentdate.getMinutes() + ":"
         + currentdate.getSeconds() + "; " ;
     lastMessage = time.toString() + post_data.message;
-    console.log(lastMessage); //TODO save this as string to send when GET notif is called
+    console.log(lastMessage);
     response.end();
 });
 
 app.post('/test', function(request, response) {
     var post_data = request.body;
     console.log(post_data); //TODO display data in table on website
+    localDB[localDBCounter] = post_data;
+    localDBCounter++;
     response.end();
 });
 
