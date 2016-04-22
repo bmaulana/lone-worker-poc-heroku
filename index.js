@@ -48,9 +48,14 @@ app.post('/test', function(request, response) {
     console.log(post_data); //TODO display data in table on website
     localDB[localDBCounter] = post_data;
     localDBCounter++;
+    console.log(localDB);
     response.end();
 });
 
+app.get('/reset', function(request, response) {
+    localDB = {};
+    localDBCounter = 0;
+});
 app.listen(app.get('port'), function() {
 	console.log('Node app is running on port', app.get('port'));
 });
