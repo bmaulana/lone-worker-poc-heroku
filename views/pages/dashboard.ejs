@@ -24,7 +24,7 @@
 </div>
 
 <script>
-    var myvar = <%- db %>;
+    var myvar = <%- JSON.stringify(db) %>;
     console.log(myvar);
 </script>
 </body>
