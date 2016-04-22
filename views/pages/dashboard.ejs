@@ -19,7 +19,13 @@
 
     <h2>Received Messages</h2>
 
-    <p><% db %></p>
+    <a href="/reset">Clear</a>
+
+    <ul>
+        <% for(var i=0; i<db.length; i++) {%>
+        <li><%= db[i] %></li>
+        <% } %>
+    </ul>
 
 </div>
 
