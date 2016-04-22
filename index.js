@@ -15,12 +15,12 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
-	response.render('pages/dashboard', {db: localDB, len : localDBCounter + 1});
+	response.render('pages/dashboard', {db: localDB, len : localDBCounter});
 });
 
 app.get('/dashboard', function(request, response) {
     console.log(localDB);
-    response.render('pages/dashboard', {db: localDB, len : localDBCounter + 1});
+    response.render('pages/dashboard', {db: localDB, len : localDBCounter});
 });
 
 app.get('/notif', function(request, response) {
